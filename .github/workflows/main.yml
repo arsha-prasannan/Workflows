@@ -1,0 +1,16 @@
+name: "Creating a Runner image"
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-22.o4
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+      with:
+        ref: main
+
+    - name: Echo Message
+      run: echo "Hello World"
