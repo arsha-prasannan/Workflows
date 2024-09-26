@@ -1,17 +1,13 @@
-name: "Creating a Runner image"
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on:
-  push:
-    branches:
-      - main
-jobs:
-  build:
-    runs-on: ubuntu-22.o4
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-      with:
-        ref: main
+name: my first workflow
 
-    - name: Echo Message
-      run: echo "Hello World"
+on: push
+
+jobs:
+   job1:
+     runs-on: ubuntu-latest
+     steps:
+      - name: My first step
+        run: echo "This is the job"
+
+      - name: "Print the environment variables"
+        run: printenv
