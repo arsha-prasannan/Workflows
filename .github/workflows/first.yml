@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: under first
-        run: ls
+        run: cat README.md
