@@ -6,8 +6,15 @@ jobs:
    job1:
      runs-on: ubuntu-latest
      steps:
-      - name: My first step
-        run: echo "This is the job"
+      - name: checkout to repo
+        uses: actions/checkout@v4
 
-      - name: "Print the environment variables"
-        run: printenv
+      - name: My first step
+        run: |
+           echo "This is the job"
+           ls -ltra
+           cat README.md
+           printenv
+
+      - name: "use cowsay"
+        run: cowsay -f dragon " Running a new cosay command .. This is dragon!!!!!!" > dragon.txt
