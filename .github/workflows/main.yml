@@ -3,23 +3,58 @@ name: my first workflow
 on: push
 
 jobs:
-   job1:
+   build_job1:
      runs-on: ubuntu-latest
      steps:
       - name: checkout to repo
         uses: actions/checkout@v4
-
-      - name: My first step
+      
+      - name: build the artifact
         run: |
-           set -x
-           echo "This is the job"
+           sudo apt-get install cowsay -y
+           cowsay -f dragon " Running a new cosay command .. This is dragon!!!!!!" > dragon.txt
+           cat dragon.txt
            ls -ltra
-           cat README.md
-           printenv
+      - name: upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+             name: dragon-artifact
+             path: dragon.txt
+    
+   test_job2: 
+      runs-on: ubuntu-latest
+      needs: build_job1
+      steps:
+        - name: checkout to repo
+          uses: actions/checkout@v4
 
-      - name: "use cowsay script"
-        run: |
-           ls -ltr
-           chmod +x scripts/test-script.sh
-           cd scripts
-           ./test-script.sh
+        - name: download artifact
+          uses: actions/upload-artifact@v4
+          with:
+               name: dragon-artifact
+               path: dragon.txt
+
+        - name: test the file generated
+          run: |
+             ls -ltra
+             grep -i dragon dragon.txt
+
+   deploy_job3:
+       runs-on: ubuntu-latest
+       needs: build_job1
+       steps:
+         - name: deploy 
+           run: echo " This is the deploy"
+
+         - name: download artifact
+           uses: actions/upload-artifact@v4
+           with:
+                name: dragon-artifact
+                path: dragon.txt
+ 
+         - name: deploy the file generated
+           run: |
+              ls -ltra
+              cat dragon.txt
+
+
