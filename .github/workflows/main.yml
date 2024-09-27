@@ -53,8 +53,6 @@ jobs:
                 path: dragon.txt
  
          - name: deploy the file generated
-           run: |
-              ls -ltraR
-              ls dragon.txt/
+           run: cat dragon.txt/dragon.txt
 
 
