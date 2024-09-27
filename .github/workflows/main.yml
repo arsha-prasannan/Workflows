@@ -32,7 +32,6 @@ jobs:
           uses: actions/download-artifact@v4
           with:
                name: dragon-artifact
-               path: dragon.txt
 
         - name: test the file generated
           run: |
@@ -50,9 +49,8 @@ jobs:
            uses: actions/download-artifact@v4
            with:
                 name: dragon-artifact
-                path: dragon.txt
  
          - name: deploy the file generated
-           run: cat dragon.txt/dragon.txt
+           run: cat dragon.txt
 
 
