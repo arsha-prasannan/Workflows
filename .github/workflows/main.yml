@@ -12,7 +12,7 @@ jobs:
       - name: build the artifact
         run: |
            sudo apt-get install cowsay -y
-           cowsay -f dragon " Running a new cosay command .. This is dragon!!!!!!" > dragon.txt
+           cowsay -f dragon " Running a new cosay command .. This is dragon!!!!!!" >> dragon.txt
            cat dragon.txt
            ls -ltra
       - name: upload artifact
@@ -54,7 +54,7 @@ jobs:
  
          - name: deploy the file generated
            run: |
-              ls -ltra
-              cat dragon.txt
+              ls -ltraR
+              ls dragon.txt/
 
 
