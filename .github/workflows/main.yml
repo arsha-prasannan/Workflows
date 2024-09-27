@@ -17,9 +17,8 @@ jobs:
            cat README.md
            printenv
 
-      - name: "use cowsay"
+      - name: "use cowsay script"
         run: |
-          set -x
-          sudo apt-get install cowsay -y
-          cowsay -f dragon " Running a new cosay command .. This is dragon!!!!!!" > dragon.txt
-          cat dragon.txt
+           ls -ltr
+           chmod +x scripts/test-script.sh
+           ./test-script.sh
