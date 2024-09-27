@@ -11,6 +11,7 @@ jobs:
 
       - name: My first step
         run: |
+           set -x
            echo "This is the job"
            ls -ltra
            cat README.md
