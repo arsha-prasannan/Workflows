@@ -18,4 +18,8 @@ jobs:
            printenv
 
       - name: "use cowsay"
-        run: cowsay -f dragon " Running a new cosay command .. This is dragon!!!!!!" > dragon.txt
+        run: |
+          set -x
+          sudo apt-get install cowsay -y
+          cowsay -f dragon " Running a new cosay command .. This is dragon!!!!!!" > dragon.txt
+          cat dragon.txt
