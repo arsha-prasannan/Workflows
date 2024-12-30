@@ -1,0 +1,16 @@
+name: first work flow
+on:
+    push:
+      paths:
+        - 'scripts/for_first/*'
+  
+  jobs:
+    folder_change:
+      runs-on: ubuntu-latest
+  
+      steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+  
+      - name: Run on Folder Changes
+        run: echo "Changes detected in 'my-folder'. Running the workflow!"

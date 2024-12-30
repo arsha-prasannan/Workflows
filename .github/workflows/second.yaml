@@ -1,0 +1,17 @@
+name: second workflow
+
+on:
+  push:
+    paths:
+      - 'scripts/for_second/*'
+
+jobs:
+  folder_change:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run on Folder Changes
+        run: echo "Changes detected in 'scripts/for_second'. Running the workflow!"

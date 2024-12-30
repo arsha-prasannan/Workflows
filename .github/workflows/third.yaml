@@ -1,0 +1,17 @@
+name: third workflow
+
+on:
+  push:
+    paths:
+      - 'scripts/for_third/*'
+
+jobs:
+  folder_change:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run on Folder Changes
+        run: echo "Changes detected in 'scripts/for_third'. Running the workflow!"
